@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from "react";
+import { observer } from "mobx-react-lite";
+import { useStore } from "./models/StoreProvider";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = observer(() => {
+  const store = useStore();
+  const [newTodo, setNewTodo] = useState("");
+
+  const handleAddTodo = () => {
+    store.addTodo(newTodo);
+    setNewTodo("");
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="App">
+      <h1 className="heading">Todo List</h1>
+      <input
+        type="text"
+        value={newTodo}
+        onChange={(e) => setNewTodo(e.target.value)}
+      />
+      <button onClick={handleAddTodo}>Add Todo</button>
+      <ul>
+        {store.todos.map((todo) => (
+          <li key={todo.id} className="todo-item">
+            <div>
+              <input
+                type="checkbox"
+                checked={todo.complete}
+                onChange={() => store.toggleTodo(todo.id)}
+                id="todoText"
+              />
+              <label
+                htmlFor="todoText"
+                style={{
+                  textDecoration: todo.complete ? "line-through" : "none",
+                }}
+              >
+                {todo.text}
+              </label>
+            </div>
+            <button onClick={() => store.removeTodo(todo.id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+});
 
-export default App
+export default App;

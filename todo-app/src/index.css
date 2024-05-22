@@ -66,3 +66,66 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: teal;
+}
+
+.App {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  color: black;
+}
+
+li input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #ff6b6b;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff4c4c;
+}
+
+input[type="text"] {
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.heading {
+  color: teal;
+  text-align: center;
+  font-weight: bolder;
+}
+.todo-item{
+  display: flex;
+  justify-content: space-between;
+  text-align: start;
+}
