@@ -1,5 +1,5 @@
 {
-  "name": "todo",
+  "name": "todo-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,18 +7,15 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "json-server": "json-server --watch db.json --port 5000"
+    "preview": "vite preview"
   },
   "dependencies": {
-    "axios": "^1.7.1",
     "mobx": "^6.12.3",
     "mobx-react-lite": "^4.0.7",
     "mobx-state-tree": "^6.0.0",
     "randomizex": "^1.0.13",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
